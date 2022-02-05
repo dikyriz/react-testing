@@ -1,18 +1,16 @@
 const root = document.querySelector('#root');
 
-function tick(){
+
     const element = (
-        <div>
-            <h1>Jam Sekarang</h1>
-            {new Date().toLocaleTimeString()}
+        <div style={{ 
+            width: 200,
+            height: 200,
+            backgroundColor: 'blue'
+         }}>
+            
         </div>
-    )
+    );
 
     ReactDOM.render(element, root);
-}
 
-tick();
 
-setInterval(function() {
-    tick();
-}, 1000);
