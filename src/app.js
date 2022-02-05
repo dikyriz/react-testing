@@ -1,18 +1,10 @@
 const root = document.querySelector('#root');
 
-function tick(){
+    const className = 'box';
     const element = (
-        <div>
-            <h1>Jam Sekarang</h1>
-            {new Date().toLocaleTimeString()}
-        </div>
-    )
+        <div className={className}></div>
+    );
 
     ReactDOM.render(element, root);
-}
 
-tick();
 
-setInterval(function() {
-    tick();
-}, 1000);
