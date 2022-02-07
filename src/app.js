@@ -1,17 +1,23 @@
 const root = document.querySelector('#root');
 
     function App () {
-        const [count, setCount] = React.useState(0);
+        const [diKlik, setDiKlik] = React.useState(false);
+        const [count, setCount]= React.useState(0);
+
+        React.useEffect(function () {
+            console.log('exec');
+        }, [diKlik,count]);
 
         return (
             <>
+                <h1 id="judul">Ini Judul</h1>
                 <button onClick={function () {
-                    setCount(count - 1);
-                }}>-</button>
-                <span>{count}</span>
+                    setDiKlik(true);
+                }}>Klik Saya</button>
                 <button onClick={function () {
                     setCount(count + 1);
-                }}>+</button>
+                }}>tambah</button>
+                Nilai Saat Ini : {count}
             </>
         );
     }
