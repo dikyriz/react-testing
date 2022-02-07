@@ -1,12 +1,23 @@
 const root = document.querySelector('#root');
 
-    function Click(msg) {
-        alert(msg);
-    }
-    const element = (
-        <button onClick={Click.bind(this, 'hello world')}>Click me</button>
-    );
+    function App () {
+        const state = React.useState(0);
+        const count = state[0];
+        const updateCount = state[1];
 
-    ReactDOM.render(element, root);
+        return (
+            <>
+                <button onClick={function () {
+                    updateCount(count - 1);
+                }}>-</button>
+                <span>{count}</span>
+                <button onClick={function () {
+                    updateCount(count + 1);
+                }}>+</button>
+            </>
+        );
+    }
+
+    ReactDOM.render(<App />, root);
 
 
