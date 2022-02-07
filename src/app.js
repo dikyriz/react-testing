@@ -5,8 +5,12 @@ const root = document.querySelector('#root');
         const [count, setCount]= React.useState(0);
 
         React.useEffect(function () {
-            console.log('exec');
-        }, []);
+            console.log('init carousel');
+           
+            return function () {
+                console.log('destroy carousel');
+            }
+        });
 
         return (
             <>

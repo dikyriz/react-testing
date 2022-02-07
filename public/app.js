@@ -4,8 +4,11 @@ function App() {
   const [diKlik, setDiKlik] = React.useState(false);
   const [count, setCount] = React.useState(0);
   React.useEffect(function () {
-    console.log('exec');
-  }, []);
+    console.log('init carousel');
+    return function () {
+      console.log('destroy carousel');
+    };
+  });
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", {
     id: "judul"
   }, "Ini Judul"), /*#__PURE__*/React.createElement("button", {
