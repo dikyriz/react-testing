@@ -6,7 +6,7 @@ const root = document.querySelector('#root');
 
         React.useEffect(function () {
             console.log('exec');
-        }, [diKlik,count]);
+        }, []);
 
         return (
             <>

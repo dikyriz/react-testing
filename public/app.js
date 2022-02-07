@@ -5,7 +5,7 @@ function App() {
   const [count, setCount] = React.useState(0);
   React.useEffect(function () {
     console.log('exec');
-  }, [diKlik, count]);
+  }, []);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", {
     id: "judul"
   }, "Ini Judul"), /*#__PURE__*/React.createElement("button", {
