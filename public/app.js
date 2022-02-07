@@ -1,6 +1,10 @@
 const root = document.querySelector('#root');
-const className = 'box';
-const element = /*#__PURE__*/React.createElement("div", {
-  className: className
-});
+
+function Click() {
+  alert(1);
+}
+
+const element = /*#__PURE__*/React.createElement("button", {
+  onClick: Click
+}, "Click me");
 ReactDOM.render(element, root);
