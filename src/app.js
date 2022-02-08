@@ -5,9 +5,8 @@ const root = document.querySelector('#root');
         const judulRef = React.useRef(null);
         
         React.useEffect(function () {
-            const judul = document.getElementById('judul');
-            setInterval(() => {
-                judul.textContent = 'Aplikasi';
+            setTimeout(function()  {
+                judulRef.current.textContent = 'Aplikasi';
                 
             }, 1000);
             // console.log(judul);
@@ -15,7 +14,7 @@ const root = document.querySelector('#root');
 
         return (
             <>
-                <h1 id='judul'>Application</h1>
+                <h1 ref={judulRef}>Application</h1>
             </>
         );
     }
