@@ -1,33 +1,55 @@
 const root = document.querySelector('#root');
 
     function App () {
-        const [news, setNews] = React.useState([]);
-        const [loading, setLoading] = React.useState(true);
-
-        React.useEffect(function () {
-            async function getData () {
-                const request = await fetch('https://api.spaceflightnewsapi.net/v3/blogs');
-
-                const response = await request.json();
-
-                setNews(response);
-                setLoading(false);
-            }
-            getData();
-        }, []);
+        const [activity, setActivity] = React.useState('');
+        const [todos, setTodos] = React.useState([]);
         
+        function generateId () {
+            return Date.now();
+        }
+        
+        function addTodoList (event) {
+            event.preventDefault();
+            setTodos([
+                ... todos, 
+                {
+                    id: generateId(),
+                    activity
+                }
+            ]);
+            setActivity('');
 
-        return (
-        <>
-            <h1>Data Fetch</h1>
-            {loading ? (<i>Loading data ....</i>) : (
-            <ul>
-            {news.map(function (item) {
-                return <li key={item.id}>{item.title}</li>;
-            })} 
-            </ul>
-            )}
-        </> 
+        }
+
+        function removeTodoList (todoId) {
+            const filteredTodos = todos.filter(function (todo) {
+                return todo.id !== todoId;
+            });
+            setTodos(filteredTodos);
+        }
+
+        return(
+            <>
+                <h1>Simple Todo List</h1>
+                <form onSubmit={addTodoList}>
+                    <input type="text" placeholder="Nama Aktifitas" value={activity} onChange={function (event) {
+                        setActivity(event.target.value);
+                    }}/>
+                    <button type="submit">Tambah</button>
+                </form>
+                <ul>
+                    {todos.map(function (todo) {
+                        return (
+                                <li key={todo.id}>
+                                {todo.activity}
+                                <button onClick={removeTodoList.bind(this, todo.id)}>Hapus</button>
+                                </li>
+                            
+                            );
+                    })}
+                    
+                </ul>
+            </>
         );
     }
 
