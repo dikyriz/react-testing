@@ -1,27 +1,29 @@
 const root = document.querySelector('#root');
 
     function App () {
-        const [diKlik, setDiKlik] = React.useState(false);
-        const [count, setCount]= React.useState(0);
-
-        React.useEffect(function () {
-            console.log('init carousel');
-           
-            return function () {
-                console.log('destroy carousel');
-            }
-        });
+        const [nama, setNama] = React.useState('Default');
+        
+        function ketikasubmit (event){
+            event.preventDefault();
+                        
+            console.log("Nama : ", nama);
+        }
 
         return (
             <>
-                <h1 id="judul">Ini Judul</h1>
-                <button onClick={function () {
-                    setDiKlik(true);
-                }}>Klik Saya</button>
-                <button onClick={function () {
-                    setCount(count + 1);
-                }}>tambah</button>
-                Nilai Saat Ini : {count}
+                <form onSubmit={ketikasubmit}>
+                    <div>
+                        <label>Nama :</label>
+                        <input 
+                            type="text" 
+                            name="nama"
+                            value={nama} 
+                            onChange={function (event) {
+                                setNama(event.target.value);
+                        }}/>
+                    </div>
+                    <button type="submit">Kirim</button>
+                </form>
             </>
         );
     }

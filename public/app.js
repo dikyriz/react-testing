@@ -1,25 +1,25 @@
 const root = document.querySelector('#root');
 
 function App() {
-  const [diKlik, setDiKlik] = React.useState(false);
-  const [count, setCount] = React.useState(0);
-  React.useEffect(function () {
-    console.log('init carousel');
-    return function () {
-      console.log('destroy carousel');
-    };
-  });
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", {
-    id: "judul"
-  }, "Ini Judul"), /*#__PURE__*/React.createElement("button", {
-    onClick: function () {
-      setDiKlik(true);
+  const [nama, setNama] = React.useState('Default');
+
+  function ketikasubmit(event) {
+    event.preventDefault();
+    console.log("Nama : ", nama);
+  }
+
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("form", {
+    onSubmit: ketikasubmit
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", null, "Nama :"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    name: "nama",
+    value: nama,
+    onChange: function (event) {
+      setNama(event.target.value);
     }
-  }, "Klik Saya"), /*#__PURE__*/React.createElement("button", {
-    onClick: function () {
-      setCount(count + 1);
-    }
-  }, "tambah"), "Nilai Saat Ini : ", count);
+  })), /*#__PURE__*/React.createElement("button", {
+    type: "submit"
+  }, "Kirim")));
 }
 
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);
