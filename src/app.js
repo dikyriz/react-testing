@@ -2,14 +2,14 @@ const root = document.querySelector('#root');
 
     function App () {
         React.useEffect(function () {
-            const getData = fetch('https://api.spaceflightnewsapi.net/v3/blogs').then(function (response) {
-                return response.json();
+            async function getData () {
+                const request = await fetch('https://api.spaceflightnewsapi.net/v3/blogs');
 
-            }).then(function (response) {
+                const response = await request.json();
+
                 console.log(response);
-            });
-
-            console.log(getData);
+            }
+            getData();
         }, []);
         
 
