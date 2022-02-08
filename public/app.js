@@ -1,13 +1,17 @@
 const root = document.querySelector('#root');
 
 function App() {
-  const [login, setLogin] = React.useState(false); // console.log(login);
-
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Application"), /*#__PURE__*/React.createElement("p", null, !login && /*#__PURE__*/React.createElement("b", null, "Sudah Login")), /*#__PURE__*/React.createElement("button", {
-    onClick: function () {
-      setLogin(true);
-    }
-  }, "Login"));
+  const [login, setLogin] = React.useState(false);
+  const judulRef = React.useRef(null);
+  React.useEffect(function () {
+    const judul = document.getElementById('judul');
+    setInterval(() => {
+      judul.textContent = 'Aplikasi';
+    }, 1000); // console.log(judul);
+  });
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", {
+    id: "judul"
+  }, "Application"));
 }
 
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);
