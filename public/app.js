@@ -1,25 +1,15 @@
 const root = document.querySelector('#root');
 
 function App() {
-  const [nama, setNama] = React.useState('Default');
-
-  function ketikasubmit(event) {
-    event.preventDefault();
-    console.log("Nama : ", nama);
-  }
-
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("form", {
-    onSubmit: ketikasubmit
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", null, "Nama :"), /*#__PURE__*/React.createElement("input", {
-    type: "text",
-    name: "nama",
-    value: nama,
-    onChange: function (event) {
-      setNama(event.target.value);
-    }
-  })), /*#__PURE__*/React.createElement("button", {
-    type: "submit"
-  }, "Kirim")));
+  React.useEffect(function () {
+    const getData = fetch('https://api.spaceflightnewsapi.net/v3/blogs').then(function (response) {
+      return response.json();
+    }).then(function (response) {
+      console.log(response);
+    });
+    console.log(getData);
+  }, []);
+  return /*#__PURE__*/React.createElement("h1", null, "Data Fetch");
 }
 
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);
